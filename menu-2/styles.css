@@ -47,7 +47,7 @@ body.open .burger {
   display: grid;
   place-items: center;
   width: 400px;
-  height: calc(100% - 20px);
+  height: 100%;
   background: #07030a;
   translate: -100% 0;
   transition: translate 0.375s cubic-bezier(0.175, 0.885, 0.32, 1);
