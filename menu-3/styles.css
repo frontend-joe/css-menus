@@ -64,22 +64,6 @@ body.open .background {
   opacity: 0.8;
 }
 
-.blur {
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  backdrop-filter: blur(10px);
-  opacity: 0;
-  transition: 0.6s;
-}
-
-body.open .blur {
-  opacity: 1;
-}
-
 .menu {
   z-index: 3;
   top: 0;
@@ -88,6 +72,8 @@ body.open .blur {
   align-items: center;
   height: 100%;
   width: 100%;
+  opacity: 0;
+  visibility: hidden;
   transition: 0.05s;
 }
 
