@@ -1,0 +1,162 @@
+body {
+  margin: 0;
+  background: rgb(27 32 44 / 100%);
+  color: #f9f9f9;
+  font-family: "Euclid Circular A", "Poppins";
+}
+
+* {
+  box-sizing: border-box;
+}
+
+nav {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  width: 100%;
+  height: 88px;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgb(27 32 44 / 70%);
+  -webkit-backdrop-filter: blur(5px);
+  -moz-backdrop-filter: blur(5px);
+  -ms-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  backface-visibility: hidden;
+  transform: translateZ(0px);
+  transition: 0.3s;
+}
+
+nav img {
+  height: 40px;
+}
+
+.burger {
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  right: 0;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  width: 82px;
+  height: 82px;
+  font-size: 30px;
+  color: #f9f9f9;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.burger i:last-child {
+  display: none;
+}
+
+body.open .burger i:first-child {
+  display: none;
+}
+
+body.open .burger i:last-child {
+  display: block;
+}
+
+.overlay {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgb(27 32 44 / 70%);
+  visibility: hidden;
+  opacity: 0;
+  backdrop-filter: blur(6px);
+  transition: 0.3s;
+}
+
+body.open .overlay {
+  visibility: visible;
+  opacity: 1;
+}
+
+main {
+  padding: 10px 30px;
+}
+
+article {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto 32px;
+  border-radius: 16px;
+  background-color: #272e3c;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+article img {
+  height: 60px;
+}
+
+article name {
+  color: rgb(255 255 255 / 50%);
+}
+
+article p {
+  margin: 8px 0 10px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+nav button {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+aside {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  width: 260px;
+  height: 100%;
+  padding: 18px 20px 20px;
+  background: #272e3c;
+  box-shadow: 0 0 20px rgb(0 0 0 / 70%);
+  translate: 100% 0;
+  transition: 0.3s;
+}
+
+body.open aside {
+  translate: 0;
+}
+
+aside a {
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+
+aside h3 {
+  margin: 40px 0 10px;
+  color: #989cad;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+aside button {
+  background: linear-gradient(-60deg, #8700ff, #ff009e);
+  color: #f7f7f7;
+  border: 0;
+  height: 60px;
+  border-radius: 30px;
+  font-family: inherit;
+  font-size: 16px;
+  margin-top: 20px;
+}
