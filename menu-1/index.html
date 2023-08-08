@@ -1,37 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Navbar 1</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-      rel="stylesheet"
-    />
-    <link href="./styles.css" rel="stylesheet" />
-  </head>
-  <body>
-    <div class="background"></div>
-    <button class="navbar-burger" onclick="toggleMenu()"></button>
-    <div class="menu">
-      <nav>
-        <a href="#" style="animation-delay: 0.1s">About</a>
-        <a href="#" style="animation-delay: 0.2s">Portfolio</a>
-        <a href="#" style="animation-delay: 0.3s">Services</a>
-        <a href="#" style="animation-delay: 0.5s">Contact</a>
-      </nav>
-    </div>
-    <script type="text/javascript">
-      const toggleMenu = () => {
-        document.body.classList.toggle("open");
-      };
-    </script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #images {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-auto-rows: 300px;
+            gap: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+        }
+
+        #images img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="images"></div>
+<script>
+    let loading = false;
+
+    const url = 'https://api.thecatapi.com/v1/images/search?size=full&limit=30';
+    const imagesDiv = document.getElementById("images");
+
+    const loadImages = async () => {
+        if (loading) {
+            return;
+        }
+        loading = true;
+        const response = await fetch(url);
+        const data = await response.json();
+        data.forEach(imageData => {
+            var html = `<img src="${imageData["url"]}">`;
+            imagesDiv.innerHTML += html;
+        });
+        loading = false;
+    };
+
+    window.onscroll = () => {
+        if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 2) {
+            loadImages();
+        }
+    };
+
+    // Initial image loading
+    const checkScroll = async () => {
+        await loadImages();
+        if (document.body.offsetHeight <= window.innerHeight) {
+            checkScroll();
+        }
+    };
+
+    checkScroll();
+</script>
+</body>
 </html>
+
