@@ -1,0 +1,106 @@
+body {
+  margin: 0;
+  display: grid;
+  font-family: "Euclid Circular A";
+  height: 100vh;
+  background: url("bg.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+a {
+  text-decoration: none;
+  color: #f9f9f9;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 20px;
+}
+
+ul li {
+  text-align: center;
+}
+
+label {
+  height: 100vh;
+  cursor: pointer;
+}
+
+input {
+  position: absolute;
+  scale: 0;
+}
+
+body.open .burger {
+  background-image: url("close.svg");
+}
+
+.burger {
+  position: fixed;
+  z-index: 2;
+  display: grid;
+  width: 80px;
+  height: 80px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  background-image: url("menu.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30%;
+  cursor: pointer;
+  transition: 0.175s;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 6px;
+  display: grid;
+  transition: 0.3s;
+}
+
+.menu > div {
+  background: #030108;
+  translate: -100% 0;
+  transition: 0.2s ease-in-out;
+}
+
+body.open .menu > div {
+  translate: 0;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    translate: 0 20px;
+  }
+  100% {
+    opacity: 1;
+    translate: 0;
+  }
+}
+
+.menu ul {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+body.open .menu ul {
+  opacity: 1;
+}
+
+body.open .menu ul li {
+  animation: appear 0.4s both;
+}
